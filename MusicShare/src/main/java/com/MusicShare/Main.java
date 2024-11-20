@@ -1,9 +1,9 @@
-package org.example;
+package com.MusicShare;
 
-import org.example.DAO.UsersDAO;
-import org.example.IMPL.UsersDAOImpl;
-import org.example.Utils.DatabaseConnection;
-import org.example.VO.Users;
+import com.MusicShare.DAO.Personal_InformationDAO;
+import com.MusicShare.Model.Personal_Information;
+import com.MusicShare.DAO.impl.PersonalInformationDAOImpl;
+import com.MusicShare.Utils.DatabaseConnection;
 
 
 import java.sql.Connection;
@@ -23,22 +23,22 @@ public class Main {
             }
 
             // 使用接口引用来操作
-            UsersDAO usersDAO = new UsersDAOImpl(connection);
+            Personal_InformationDAO personalInformationDAO = new PersonalInformationDAOImpl(connection);
 
             // 插入一个新用户
             try {
-                Users user = new Users();
+                Personal_Information user = new Personal_Information();
                 user.setName("John Doe");
                 user.setEmail("john@example.com");
                 user.setPassword("password123");
 
-                usersDAO.insertUser(user);
+                personalInformationDAO.insertUser(user);
 
                 System.out.println("User inserted successfully");
 
                 // 获取所有用户
-                List<Users> usersList = usersDAO.getAllUsers();
-                for (Users u : usersList) {
+                List<Personal_Information> personalInformationList = personalInformationDAO.getAllUsers();
+                for (Personal_Information u : personalInformationList) {
                     System.out.println("User ID: " + u.getId() + ", Name: " + u.getName());
                 }
 

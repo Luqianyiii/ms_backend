@@ -1,22 +1,22 @@
-package org.example.IMPL;
-import org.example.DAO.UsersDAO;
-import org.example.VO.Users;
+package com.MusicShare.DAO.impl;
+import com.MusicShare.DAO.Personal_InformationDAO;
+import com.MusicShare.Model.Personal_Information;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersDAOImpl implements UsersDAO {
+public class PersonalInformationDAOImpl implements Personal_InformationDAO {
 
     private Connection connection;
 
     // 构造方法，传入数据库连接
-    public UsersDAOImpl(Connection connection) {
+    public PersonalInformationDAOImpl(Connection connection) {
         this.connection = connection;
     }
 
     @Override
-    public void insertUser(Users user) throws SQLException {
+    public void insertUser(Personal_Information user) throws SQLException {
         String sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, user.getName());
@@ -28,13 +28,13 @@ public class UsersDAOImpl implements UsersDAO {
 
 
     @Override
-    public Users getUserById(int userId) throws SQLException {
+    public Personal_Information getUserById(int userId) throws SQLException {
         String sql = "SELECT * FROM users WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, userId);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    Users user = new Users();
+                    Personal_Information user = new Personal_Information();
                     user.setId(rs.getInt("id"));
                     user.setName(rs.getString("name"));
                     user.setEmail(rs.getString("email"));
@@ -47,7 +47,7 @@ public class UsersDAOImpl implements UsersDAO {
     }
 
     @Override
-    public void updateUser(Users user) throws SQLException {
+    public void updateUser(Personal_Information user) throws SQLException {
         String sql = "UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, user.getName());
@@ -68,19 +68,19 @@ public class UsersDAOImpl implements UsersDAO {
     }
 
     @Override
-    public List<Users> getAllUsers() throws SQLException {
-        List<Users> usersList = new ArrayList<>();
+    public List<Personal_Information> getAllUsers() throws SQLException {
+        List<Personal_Information> personalInformationList = new ArrayList<>();
         String sql = "SELECT * FROM users";
         try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Users user = new Users();
+                Personal_Information user = new Personal_Information();
                 user.setId(rs.getInt("id"));
                 user.setName(rs.getString("name"));
                 user.setEmail(rs.getString("email"));
                 user.setPassword(rs.getString("password"));
-                usersList.add(user);
+                personalInformationList.add(user);
             }
         }
-        return usersList;
+        return personalInformationList;
     }
 }

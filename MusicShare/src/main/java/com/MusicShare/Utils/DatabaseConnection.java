@@ -1,4 +1,4 @@
-package org.example.Utils;
+package com.MusicShare.Utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
