@@ -11,7 +11,7 @@ public class DatabaseConnection {
     private static final String PASSWORD = "Luqianyi123456"; // 修改为你的数据库密码
 
 
-    public  static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         try {
             // 加载 MySQL 驱动
             Class.forName("com.mysql.cj.jdbc.Driver");

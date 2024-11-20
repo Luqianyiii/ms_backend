@@ -16,8 +16,8 @@ public class LoginFilter implements Filter {
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         //1. 检查本次请求是否处于登录状态
-        HttpServletRequest request = null;
-        HttpServletResponse response = null;
+        HttpServletRequest request;
+        HttpServletResponse response;
         try {
             request = (HttpServletRequest) req;
             response = (HttpServletResponse) resp;
@@ -27,10 +27,10 @@ public class LoginFilter implements Filter {
 
         HttpSession session = request.getSession();
         Object user = session.getAttribute("user");
-        if(user==null){
+        if (user == null) {
             //说明不处于登录状态(跳转至登录页面)
-            response.sendRedirect(request.getContextPath()+"/user?method=login.html");
-        }else{
+            response.sendRedirect(request.getContextPath() + "/user?method=login.html");
+        } else {
             //说明处于登录状态
             chain.doFilter(req, resp);
         }
