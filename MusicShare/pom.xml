@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
 
   <name>MusicShare</name>
-  <url>http://maven.apache.org</url>
+  <url>https://maven.apache.org</url>
 
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
@@ -30,6 +30,14 @@
       <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>5.0.0</version> <!-- 或者使用 Tomcat 支持的版本 -->
+      <scope>provided</scope>
+    </dependency>
+
 
   </dependencies>
 
