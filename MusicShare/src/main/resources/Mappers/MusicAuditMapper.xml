@@ -1,0 +1,20 @@
+<mapper namespace="com.MusicShare.DAO.MusicAuditDAO">
+    <select id="getAuditRecordsByMusicId" resultType="MusicAudit">
+        SELECT * FROM music_audit WHERE music_id = #{musicId}
+    </select>
+
+    <insert id="addAuditRecord" parameterType="MusicAudit">
+        INSERT INTO music_audit (music_id, audit_status, auditor_id, created_at)
+        VALUES (#{musicId}, #{auditStatus}, #{auditorId}, NOW())
+    </insert>
+
+    <delete id="deleteAuditRecord" parameterType="int">
+        DELETE FROM music_audit WHERE audit_id = #{auditId}
+    </delete>
+
+    <update id="updateAuditRecord" parameterType="MusicAudit">
+        UPDATE music_audit
+        SET audit_status = #{auditStatus}, auditor_id = #{auditorId}
+        WHERE audit_id = #{auditId}
+    </update>
+</mapper>

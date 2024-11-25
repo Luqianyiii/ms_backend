@@ -1,0 +1,18 @@
+<mapper namespace="com.MusicShare.DAO.FansDAO">
+    <select id="getFansByUserId" resultType="Fans">
+        SELECT * FROM fans WHERE user_id = #{Personal_InformationId}
+    </select>
+
+    <insert id="addFan" parameterType="Fans">
+        INSERT INTO fans (user_id, fan_id, created_at)
+        VALUES (#{Personal_InformationId}, #{fanId}, NOW())
+    </insert>
+
+    <delete id="removeFan" parameterType="int">
+        DELETE FROM fans WHERE fan_id = #{fanId}
+    </delete>
+
+    <select id="isFanExists" resultType="int">
+        SELECT COUNT(*) FROM fans WHERE user_id = #{Personal_InformationId} AND fan_id = #{fanId}
+    </select>
+</mapper>

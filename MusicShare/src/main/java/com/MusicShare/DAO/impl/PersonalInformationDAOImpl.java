@@ -36,7 +36,7 @@ public class PersonalInformationDAOImpl implements Personal_InformationDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     Personal_Information user = new Personal_Information();
-                    user.setId(rs.getInt("id"));
+                    user.setUserId(rs.getInt("id"));
                     user.setName(rs.getString("name"));
                     user.setEmail(rs.getString("email"));
                     user.setPassword(rs.getString("password"));
@@ -54,7 +54,7 @@ public class PersonalInformationDAOImpl implements Personal_InformationDAO {
             stmt.setString(1, user.getName());
             stmt.setString(2, user.getEmail());
             stmt.setString(3, user.getPassword());
-            stmt.setInt(4, user.getId());
+            stmt.setInt(4, user.getUserId());
             stmt.executeUpdate();
         }
     }
@@ -75,7 +75,7 @@ public class PersonalInformationDAOImpl implements Personal_InformationDAO {
         try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 Personal_Information user = new Personal_Information();
-                user.setId(rs.getInt("id"));
+                user.setUserId(rs.getInt("id"));
                 user.setName(rs.getString("name"));
                 user.setEmail(rs.getString("email"));
                 user.setPassword(rs.getString("password"));

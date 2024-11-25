@@ -38,7 +38,7 @@ public class Main {
             // 获取所有用户
             List<Personal_Information> personalInformationList = personalInformationDAO.getAllUsers();
             for (Personal_Information u : personalInformationList) {
-                System.out.println("User ID: " + u.getId() + ", Name: " + u.getName());
+                System.out.println("User ID: " + u.getUserId() + ", Name: " + u.getName());
             }
 
         } catch (SQLException e) {

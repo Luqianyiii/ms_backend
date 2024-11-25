@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 配置全局属性 -->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/> <!-- 控制台日志输出 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/> <!-- 数据库字段和 Java 属性映射 -->
+    </settings>
+
+    <!-- 配置数据库连接 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost:3306/ofy?useUnicode=true&amp;characterEncoding=utf-8" />
+                <property name="root" value="root" />
+                <property name="Luqianyi123456" value="Luqianyi123456" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 配置 Mapper 文件 -->
+    <mappers>
+        <mapper resource="mappers/CommentMapper.xml" />
+        <mapper resource="mappers/FansMapper.xml" />
+        <!-- 添加你的其他 Mapper 文件路径 -->
+    </mappers>
+</configuration>

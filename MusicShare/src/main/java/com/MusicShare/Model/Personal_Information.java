@@ -1,18 +1,18 @@
 package com.MusicShare.Model;
 
-public class Personal_Information {
-    private int id;
+public class  Personal_Information {
+    private int userId;
     private String name;
     private String email;
     private String password;
 
     // 构造方法、getter 和 setter
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int id) {
+        this.userId = id;
     }
 
     public String getName() {

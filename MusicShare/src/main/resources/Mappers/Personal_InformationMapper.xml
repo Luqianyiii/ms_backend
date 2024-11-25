@@ -1,0 +1,28 @@
+<mapper namespace="com.MusicShare.DAO.Personal_InformationDAO">
+    <!-- 根据ID获取用户 -->
+    <select id="getUserByUserId" resultType="com.MusicShare.model.Personal_Information">
+        SELECT * FROM personal_information WHERE id = #{id};
+    </select>
+
+    <!-- 根据用户名获取用户 -->
+    <select id="getUserByUsername" resultType="com.MusicShare.model.Personal_Information">
+        SELECT * FROM personal_information WHERE username = #{username};
+    </select>
+
+    <!-- 添加用户 -->
+    <insert id="addUser">
+        INSERT INTO personal_information (username, email, password)
+        VALUES (#{username}, #{email}, #{password});
+    </insert>
+
+    <!-- 更新用户 -->
+    <update id="updateUser">
+        UPDATE personal_information SET username = #{username}, email = #{email}, password = #{password}
+        WHERE id = #{id};
+    </update>
+
+    <!-- 删除用户 -->
+    <delete id="deleteUser">
+        DELETE FROM personal_information WHERE id = #{id};
+    </delete>
+</mapper>

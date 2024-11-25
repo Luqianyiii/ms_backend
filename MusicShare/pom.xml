@@ -38,6 +38,19 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.13</version> <!-- 最新版本可以在 Maven 中心查找 -->
+        </dependency>
+
+        <!-- MyBatis 用于连接数据库的工具 -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
 
     </dependencies>
     <build>

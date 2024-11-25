@@ -1,0 +1,20 @@
+<mapper namespace="com.MusicShare.DAO.MusicListDAO">
+    <select id="getMusicListByUserId" resultType="MusicList">
+        SELECT * FROM music_list WHERE user_id = #{Personal_InformationId}
+    </select>
+
+    <insert id="addMusicToList" parameterType="MusicList">
+        INSERT INTO music_list (user_id, music_id, created_at)
+        VALUES (#{Personal_InformationId}, #{musicId}, NOW())
+    </insert>
+
+    <delete id="removeMusicFromList" parameterType="int">
+        DELETE FROM music_list WHERE music_list_id = #{musicListId}
+    </delete>
+
+    <update id="updateMusicList" parameterType="MusicList">
+        UPDATE music_list
+        SET music_id = #{musicId}
+        WHERE music_list_id = #{musicListId}
+    </update>
+</mapper>

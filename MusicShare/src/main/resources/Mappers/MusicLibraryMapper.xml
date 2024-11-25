@@ -1,0 +1,20 @@
+<mapper namespace="com.MusicShare.DAO.MusicLibraryDAO">
+    <select id="getAllMusic" resultType="MusicLibrary">
+        SELECT * FROM music_library
+    </select>
+
+    <insert id="addMusic" parameterType="MusicLibrary">
+        INSERT INTO music_library (title, artist, genre, release_date, created_at)
+        VALUES (#{title}, #{artist}, #{genre}, #{releaseDate}, NOW())
+    </insert>
+
+    <delete id="removeMusic" parameterType="int">
+        DELETE FROM music_library WHERE music_id = #{musicId}
+    </delete>
+
+    <update id="updateMusic" parameterType="MusicLibrary">
+        UPDATE music_library
+        SET title = #{title}, artist = #{artist}, genre = #{genre}, release_date = #{releaseDate}
+        WHERE music_id = #{musicId}
+    </update>
+</mapper>
